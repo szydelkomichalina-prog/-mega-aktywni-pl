@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Obozy Żeglarskie dla dzieci — Mega Aktywni | Iława",
@@ -11,23 +12,35 @@ const voyages = [
   {
     title: "Rejs tygodniowy",
     age: "9–16 lat",
+    price: "1 890 zł",
+    priceNote: "do 8 maja / regularna: 2 100 zł",
+    date: "27.06–03.07.2026",
     desc: "Pełna przygoda żeglarska z noclegami na jachcie, atrakcjami każdego dnia i niezapomnianymi wspomnieniami.",
     color: "bg-brand-red/10 border-brand-red/20",
     accent: "text-brand-red",
+    image: "/images/oferta-rejs-tygodniowy-2026.jpg",
   },
   {
     title: "Rejs 3-dniowy",
     age: "od 8 lat",
+    price: "840 zł",
+    priceNote: "",
+    date: "6–8.07 i 9–11.07.2026",
     desc: "Idealny na pierwszy kontakt z żeglarstwem. Wystarczająco długo, by pokochać wodę.",
     color: "bg-brand-blue-med/10 border-brand-blue-med/20",
     accent: "text-brand-blue-med",
+    image: "/images/oferta-rejs-3-dniowy-2026.jpg",
   },
   {
     title: "Rejs jednodniowy",
     age: "od 6 lat",
+    price: "250 zł",
+    priceNote: "",
+    date: "weekendy: maj, czerwiec, lipiec",
     desc: "Jedna wspaniała przygoda na wodzie — świetna opcja dla młodszych dzieci.",
     color: "bg-brand-orange/10 border-brand-orange/20",
     accent: "text-brand-orange",
+    image: "/images/oferta-rejs-jednodniowy-2026.jpg",
   },
 ];
 
@@ -56,16 +69,18 @@ export default function Obozy() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-gradient-to-br from-brand-red/10 to-brand-orange/5 py-16 sm:py-24">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-          <div className="inline-flex items-center gap-2 bg-brand-red/10 rounded-full px-4 py-1.5 text-sm text-brand-red font-semibold mb-4">
+      <section className="relative py-16 sm:py-24 overflow-hidden">
+        <Image src="/images/sailboat-full-sail-blue-sky.jpg" alt="Jacht pod żaglem" fill className="object-cover" priority />
+        <div className="absolute inset-0 bg-brand-blue/60" />
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center">
+          <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur rounded-full px-4 py-1.5 text-sm text-white font-semibold mb-4">
             <span>⛵</span>
             <span>Obozy dla dzieci 6–17 lat</span>
           </div>
-          <h1 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-brand-dark mb-6">
+          <h1 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-white mb-6">
             Woda, wiatr i niezapomniana przygoda
           </h1>
-          <p className="text-lg text-brand-gray leading-relaxed max-w-2xl mx-auto">
+          <p className="text-lg text-white/80 leading-relaxed max-w-2xl mx-auto">
             Twoje dziecko pokocha żeglowanie! Obozy żeglarskie pełne atrakcji, nauki i radości.
           </p>
         </div>
@@ -79,10 +94,20 @@ export default function Obozy() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {voyages.map((v) => (
-              <div key={v.title} className={`rounded-2xl p-6 border ${v.color}`}>
-                <span className={`text-xs font-semibold ${v.accent} uppercase tracking-wider`}>{v.age}</span>
-                <h3 className="font-display font-bold text-xl text-brand-dark mt-2 mb-3">{v.title}</h3>
-                <p className="text-sm text-brand-gray leading-relaxed">{v.desc}</p>
+              <div key={v.title} className="rounded-2xl overflow-hidden border border-gray-100 bg-white shadow-sm">
+                <div className="relative h-56">
+                  <Image src={v.image} alt={v.title} fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
+                </div>
+                <div className="p-6">
+                  <span className={`text-xs font-semibold ${v.accent} uppercase tracking-wider`}>{v.age}</span>
+                  <h3 className="font-display font-bold text-xl text-brand-dark mt-2 mb-1">{v.title}</h3>
+                  <div className="mb-3">
+                    <span className="text-2xl font-bold text-brand-blue">{v.price}</span>
+                    {v.priceNote && <span className="text-xs text-brand-gray ml-2">{v.priceNote}</span>}
+                  </div>
+                  <p className="text-xs text-brand-blue-med font-semibold mb-2">📅 {v.date}</p>
+                  <p className="text-sm text-brand-gray leading-relaxed">{v.desc}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -120,6 +145,32 @@ export default function Obozy() {
                 <div className="text-2xl mb-3">{p.icon}</div>
                 <h3 className="font-semibold text-brand-dark mb-1">{p.title}</h3>
                 <p className="text-sm text-brand-gray">{p.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Galeria */}
+      <section className="py-16 sm:py-24 bg-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+          <h2 className="font-display font-bold text-2xl sm:text-3xl text-brand-dark mb-8 text-center">
+            Galeria z obozów
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+            {[
+              { src: "/images/kids-on-sailboat-lifejackets.jpg", alt: "Dzieci na jachcie" },
+              { src: "/images/girls-lifejackets-motorboat.jpg", alt: "Dziewczynki na motorówce" },
+              { src: "/images/kids-sup-board-lake.jpg", alt: "SUP na jeziorze" },
+              { src: "/images/kid-jumping-dock-holi.jpg", alt: "Skok do wody" },
+              { src: "/images/kids-campfire-forest.jpg", alt: "Ognisko w lesie" },
+              { src: "/images/kids-holi-game-forest.jpg", alt: "Festiwal kolorów" },
+              { src: "/images/boys-motorboat-lifejackets.jpg", alt: "Chłopcy na motorówce" },
+              { src: "/images/kids-dock-evening-marina.jpg", alt: "Wieczór w marinie" },
+              { src: "/images/sailboat-gambit-marina-sunset.jpg", alt: "Jacht Gambit o zachodzie" },
+            ].map((img) => (
+              <div key={img.src} className="relative aspect-square rounded-xl overflow-hidden">
+                <Image src={img.src} alt={img.alt} fill className="object-cover hover:scale-105 transition-transform duration-500" sizes="(max-width: 768px) 50vw, 33vw" />
               </div>
             ))}
           </div>

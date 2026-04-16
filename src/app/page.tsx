@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Image from "next/image";
+import HeroSlider from "@/components/ui/HeroSlider";
 
 const pillars = [
   {
@@ -8,6 +10,7 @@ const pillars = [
     desc: "Poprzez zabawę rozwijamy umiejętności ruchowe i zdolności motoryczne Twojego dziecka.",
     href: "/zajecia",
     color: "bg-brand-orange/10 text-brand-orange",
+    image: "/images/kids-campfire-forest.jpg",
   },
   {
     icon: "🏊",
@@ -16,6 +19,7 @@ const pillars = [
     desc: "Nauka i doskonalenie pływania z indywidualnie dobranymi grupami. Transport zapewniony!",
     href: "/plywanie",
     color: "bg-brand-blue-med/10 text-brand-blue-med",
+    image: "/images/kids-swimming-lake-group.jpg",
   },
   {
     icon: "⛵",
@@ -24,6 +28,7 @@ const pillars = [
     desc: "Niezapomniana przygoda na wodzie — żeglarstwo, SUP, paintball i dziesiątki atrakcji.",
     href: "/obozy",
     color: "bg-brand-red/10 text-brand-red",
+    image: "/images/sailboat-full-sail-blue-sky.jpg",
   },
 ];
 
@@ -55,10 +60,10 @@ const testimonials = [
 export default function Home() {
   return (
     <>
-      {/* Hero */}
-      <section className="relative bg-gradient-to-br from-brand-blue via-brand-blue-med to-brand-blue overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/hero-pattern.svg')] opacity-5" />
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 py-20 sm:py-28 lg:py-36 text-center">
+      {/* Hero with Slider */}
+      <section className="relative min-h-[600px] sm:min-h-[700px] overflow-hidden flex items-center">
+        <HeroSlider />
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-20 sm:py-28 lg:py-36 text-center">
           <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur rounded-full px-4 py-1.5 text-sm text-white/90 mb-6">
             <span>🏅</span>
             <span>Zajęcia sportowe dla dzieci w Czersku</span>
@@ -101,8 +106,12 @@ export default function Home() {
               <Link
                 key={p.href}
                 href={p.href}
-                className="group bg-white border border-gray-100 rounded-2xl p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+                className="group bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
               >
+                <div className="relative h-48 overflow-hidden">
+                  <Image src={p.image} alt={p.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 768px) 100vw, 33vw" />
+                </div>
+                <div className="p-8">
                 <div className={`w-14 h-14 rounded-xl ${p.color} flex items-center justify-center text-2xl mb-5`}>
                   {p.icon}
                 </div>
@@ -113,6 +122,7 @@ export default function Home() {
                 <p className="text-sm text-brand-gray leading-relaxed">{p.desc}</p>
                 <div className="mt-5 text-brand-blue-med text-sm font-semibold group-hover:translate-x-1 transition-transform">
                   Dowiedz się więcej →
+                </div>
                 </div>
               </Link>
             ))}

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Nauka Pływania dla dzieci — Mega Aktywni | Ocypel",
@@ -29,16 +30,18 @@ export default function Plywanie() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-gradient-to-br from-brand-blue-med/10 to-brand-blue-light py-16 sm:py-24">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-          <div className="inline-flex items-center gap-2 bg-brand-blue-med/10 rounded-full px-4 py-1.5 text-sm text-brand-blue-med font-semibold mb-4">
+      <section className="relative py-16 sm:py-24 overflow-hidden">
+        <Image src="/images/kids-swimming-lake-group.jpg" alt="Dzieci pływające w jeziorze" fill className="object-cover" priority />
+        <div className="absolute inset-0 bg-brand-blue/60" />
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center">
+          <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur rounded-full px-4 py-1.5 text-sm text-white font-semibold mb-4">
             <span>🏊</span>
             <span>Dla dzieci 6–13 lat</span>
           </div>
-          <h1 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-brand-dark mb-6">
+          <h1 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-white mb-6">
             Pływanie
           </h1>
-          <p className="text-lg text-brand-gray leading-relaxed max-w-2xl mx-auto">
+          <p className="text-lg text-white/80 leading-relaxed max-w-2xl mx-auto">
             Nauka i doskonalenie pływania dla dzieci na basenie w Ocyplu.
             Prowadzący: Filip Pruszak.
           </p>
