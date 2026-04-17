@@ -114,6 +114,35 @@ export default function Obozy() {
         </div>
       </section>
 
+      {/* Pobierz PDF */}
+      <section className="py-12 sm:py-16 bg-white">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6">
+          <div className="bg-gradient-to-br from-brand-red to-brand-orange rounded-2xl p-8 sm:p-10 text-center shadow-lg">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/20 backdrop-blur mb-4 text-3xl">
+              📄
+            </div>
+            <h2 className="font-display font-bold text-2xl sm:text-3xl text-white mb-3">
+              Pełna oferta obozów 2026
+            </h2>
+            <p className="text-white/90 mb-6 max-w-xl mx-auto">
+              Pobierz kompletną broszurę ze wszystkimi terminami, cenami i szczegółami rejsów żeglarskich.
+            </p>
+            <a
+              href="/files/oferta-obozy-2026.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              download
+              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-brand-red text-lg font-bold rounded-xl hover:bg-white/90 transition-colors shadow-lg"
+            >
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3" />
+              </svg>
+              Pobierz PDF (5.5 MB)
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* Atrakcje */}
       <section className="py-16 sm:py-24 bg-brand-blue-bg">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
