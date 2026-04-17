@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import ContactForm from "@/components/ui/ContactForm";
 
 export const metadata: Metadata = {
   title: "Kontakt — Mega Aktywni | Czersk",
@@ -27,73 +28,7 @@ export default function Kontakt() {
             {/* Formularz */}
             <div>
               <h2 className="font-display font-bold text-2xl text-brand-dark mb-6">Formularz zgłoszeniowy</h2>
-              <form className="space-y-4">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-brand-dark mb-1">Imię rodzica</label>
-                    <input
-                      type="text"
-                      className="w-full h-11 px-4 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue/30"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-brand-dark mb-1">Telefon</label>
-                    <input
-                      type="tel"
-                      className="w-full h-11 px-4 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue/30"
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-brand-dark mb-1">E-mail</label>
-                  <input
-                    type="email"
-                    className="w-full h-11 px-4 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue/30"
-                  />
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-brand-dark mb-1">Imię dziecka</label>
-                    <input
-                      type="text"
-                      className="w-full h-11 px-4 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue/30"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-brand-dark mb-1">Wiek dziecka</label>
-                    <input
-                      type="number"
-                      min={3}
-                      max={17}
-                      className="w-full h-11 px-4 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue/30"
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-brand-dark mb-1">Usługa</label>
-                  <select className="w-full h-11 px-4 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue/30 bg-white">
-                    <option value="">Wybierz usługę...</option>
-                    <option value="zajecia">Zajęcia Ogólnorozwojowe</option>
-                    <option value="plywanie">Pływanie</option>
-                    <option value="obozy">Obozy Żeglarskie</option>
-                    <option value="klub">Klub Sportowy</option>
-                    <option value="inne">Inne</option>
-                  </select>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-brand-dark mb-1">Wiadomość</label>
-                  <textarea
-                    rows={4}
-                    className="w-full px-4 py-3 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue/30 resize-none"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="w-full h-12 bg-brand-blue text-white font-semibold rounded-xl hover:bg-brand-blue-med transition-colors shadow-sm text-sm"
-                >
-                  Wyślij wiadomość
-                </button>
-              </form>
+              <ContactForm />
             </div>
 
             {/* Dane kontaktowe */}
